@@ -13,16 +13,28 @@ public class Reserva {
 	private Date entrada;
 	private Date saida;
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Especifiquei como será o formato da data, com o objeto SimpleDateFormat
 
 	public Reserva(int numeroQuarto, Date entrada, Date saida, String nomeCliente) {
 
-		Date atual = new Date();
+		Date atual = new Date(); // criei uma variável do tipo DATE e atribui a ela a data de hoje (com new Date())
 
-		if (entrada.before(atual)) {
+		if (entrada.before(atual) || saida.before(atual)) {
 			throw new ExcecaoPersonalizada("As datas da reserva precisam ser superiores a data atual.");
 		}
-
+		
+		/*
+		 * ATIVIDADE
+		  Fiz o tratamento da primeira exceção personalizada, para verificar se as datas de entrada
+		  e saída informada pelo usuário são superiores à data atual.
+		  
+		  Utilizei o método "before", nativo do Date.java
+		  
+		  Falta fazer as demais, são elas:
+		  A data de saída deve ser superior à data de entrada
+		  A reserva precisa conter pelo menos 01 noite.
+		*/
+		
 		this.numeroQuarto = numeroQuarto;
 		this.entrada = entrada;
 		this.saida = saida;
